@@ -27172,8 +27172,8 @@ class MainView extends (0, _reactDefault.default).Component {
             lineNumber: 68,
             columnNumber: 9
         }, this);
-        // Before the movies have been loaded
-        if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        if (movies.length === 0) // Before the movies have been loaded
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "main-view"
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
@@ -27244,18 +27244,13 @@ MovieCard.PropTypes = {
         Description: (0, _propTypesDefault.default).string.isRequired,
         Released: (0, _propTypesDefault.default).number.isRequired,
         Genre: (0, _propTypesDefault.default).shape({
-            Name: (0, _propTypesDefault.default).string.isRequired,
-            Description: (0, _propTypesDefault.default).string
+            Name: (0, _propTypesDefault.default).string.isRequired
         }).isRequired,
         Director: (0, _propTypesDefault.default).shape({
-            Name: (0, _propTypesDefault.default).string.isRequired,
-            Bio: (0, _propTypesDefault.default).string,
-            Birth: (0, _propTypesDefault.default).number,
-            Death: (0, _propTypesDefault.default).number
+            Name: (0, _propTypesDefault.default).string.isRequired
         }).isRequired,
         Actors: (0, _propTypesDefault.default).array.isRequired,
-        ImagePath: (0, _propTypesDefault.default).string.isRequired,
-        Featured: (0, _propTypesDefault.default).string
+        ImagePath: (0, _propTypesDefault.default).string.isRequired
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
 };
@@ -28284,20 +28279,7 @@ MovieView.PropTypes = {
     movie: (0, _propTypesDefault.default).shape({
         Title: (0, _propTypesDefault.default).string.isRequired,
         Description: (0, _propTypesDefault.default).string.isRequired,
-        Released: (0, _propTypesDefault.default).number.isRequired,
-        Genre: (0, _propTypesDefault.default).shape({
-            Name: (0, _propTypesDefault.default).string.isRequired,
-            Description: (0, _propTypesDefault.default).string
-        }).isRequired,
-        Director: (0, _propTypesDefault.default).shape({
-            Name: (0, _propTypesDefault.default).string.isRequired,
-            Bio: (0, _propTypesDefault.default).string,
-            Birth: (0, _propTypesDefault.default).number,
-            Death: (0, _propTypesDefault.default).number
-        }).isRequired,
-        Actors: (0, _propTypesDefault.default).array.isRequired,
-        ImagePath: (0, _propTypesDefault.default).string.isRequired,
-        Featured: (0, _propTypesDefault.default).string
+        ImagePath: (0, _propTypesDefault.default).string.isRequired
     }).isRequired,
     onBackClick: (0, _propTypesDefault.default).func.isRequired
 };

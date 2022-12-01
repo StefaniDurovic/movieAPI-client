@@ -73,8 +73,8 @@ class MainView extends React.Component {
         />
       );
 
-    // Before the movies have been loaded
     if (movies.length === 0) {
+      // Before the movies have been loaded
       return <div className="main-view"></div>;
     } else {
       return (
