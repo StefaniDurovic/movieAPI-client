@@ -1,5 +1,7 @@
-$color: steelblue;
+$theme-colors: (
+    "info": tomato,
+    "danger": teal,
+    "success": #e11b3f,
+);
 
-.my-flix {
-  color: $color;
-}
+@import "~bootstrap/scss/bootstrap.scss";

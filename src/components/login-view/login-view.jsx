@@ -1,5 +1,13 @@
 import React, { useState } from 'react'; //useState hook
 import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import './login-view.scss';
 
 //function component
 export function LoginView(props) {
@@ -15,18 +23,32 @@ export function LoginView(props) {
   };
 
   return (
-    <form>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <button type="submit" onClick={handleSubmit}>Submit</button>
-      <button type="button">Register</button>
-    </form>
+    <Container>
+        <Row className="justify-content-center">
+            <Col md={4}>
+                <CardGroup style={{width:'22rem'}}>
+                    <Card style={{marginTop:'9.375rem'}}>
+                        <Card.Body>
+                            <Card.Title style={{marginBottom:'1.25rem'}}>Login</Card.Title>
+                            <Form>
+                              <Form.Group controlId="formUsername">
+                                <Form.Label>Username:</Form.Label>
+                                <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+                              </Form.Group>
+                              <Form.Group controlId="formPassword">
+                                <Form.Label style={{marginTop:'0.625rem'}}>Password:</Form.Label>
+                                <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+                              </Form.Group>
+                              <Button variant="success" style={{marginTop:'1.25rem'}} type="submit" onClick={handleSubmit}>
+                                Submit
+                              </Button>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                </CardGroup>
+            </Col>
+        </Row>
+    </Container>
   );
 }
 
