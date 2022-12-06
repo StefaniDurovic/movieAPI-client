@@ -1,3 +1,14 @@
-.bg-mycolor {
-    background-color: crimson;
+$background-color: #cad178;
+$button-color: #e11b3f;
+
+.card-body {
+    color: $background-color;
 }
+
+.btn-success {
+    background-color: $button-color!important;
+    border-color: $button-color!important;
+  }
+
+
+  @import "~bootstrap/scss/bootstrap.scss";

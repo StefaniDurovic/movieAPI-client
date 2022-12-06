@@ -1,6 +1,8 @@
+$background-color: #cad178;
+$button-color: #e11b3f;
 
-    $primary: tomato;
-    $secondary: teal;
-    $success: #e11b3f;
+body {
+    background-color: $background-color!important;
+}
 
 @import "~bootstrap/scss/bootstrap.scss";
