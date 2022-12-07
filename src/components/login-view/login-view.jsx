@@ -20,21 +20,20 @@ export function LoginView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     /* Send a request to the server for authentication */
-    props.onLoggedIn(username);
+    axios.post("https://jessica-chastain-movies.herokuapp.com//login", {
+        Username: username,
+        Password: password,
+      })
+      .then((response) => {
+        const data = response.data;
+        props.onLoggedIn(data);
+      })
+      .catch((e) => {
+        console.log("no such user");
+      });
   };
-
-  //   axios.post("https://jessica-chastain-movies.herokuapp.com//login", {
-  //       Username: username,
-  //       Password: password,
-  //     })
-  //     .then((response) => {
-  //       const data = response.data;
-  //       props.onLoggedIn(data);
-  //     })
-  //     .catch((e) => {
-  //       console.log("no such user");
-  //     });
-  // };
+  
+    // props.onLoggedIn(username);
 
   return (
     <Container>

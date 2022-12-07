@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { useState, useEffect } from "react";
 
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
@@ -11,6 +12,7 @@ import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.css';
 import Container from 'react-bootstrap/Container';
 import './main-view.scss';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 
 //class component
