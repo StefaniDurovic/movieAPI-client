@@ -34784,7 +34784,6 @@ function NavigationHeader() {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Brand, {
                     className: "navbar-text",
-                    bsClass: "",
                     href: "#home",
                     children: "Jessica Chastain Movies"
                 }, void 0, false, {
