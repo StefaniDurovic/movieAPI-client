@@ -6,14 +6,14 @@ import './NavigationHeader.scss';
 
 export function NavigationHeader() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="navbar-color p-4" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">Jessica Chastain Movies</Navbar.Brand>
+        <Navbar.Brand className="navbar-text" bsClass="" href="#home">Jessica Chastain Movies</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Profile</Nav.Link>
-            <Nav.Link href="#link">Movies</Nav.Link>
+          <Nav className="ms-auto">
+            <Nav.Link className="navbar-text" href="#home">Profile</Nav.Link>
+            <Nav.Link className="navbar-text" href="#link">Movies</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

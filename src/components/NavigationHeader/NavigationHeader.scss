@@ -1,8 +1,12 @@
-$navbar-color: #e11b3f;
+$navbar-color: #3C5B4B;
+$navbar-text: #ece8e8;
 
-.navbar {
-    background-color: $navbar-color!important;
+.navbar-color {
+    background-color: $navbar-color;
 }
 
 
-@import "~bootstrap/scss/bootstrap.scss";
+
+.navbar-light, .navbar-text, .navbar-brand {
+    color: $navbar-text;
+}

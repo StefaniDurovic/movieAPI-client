@@ -1,0 +1,21 @@
+$movie-card-color: #ece8e8;
+
+.movie-card {
+    background-color: $movie-card-color;
+}
+
+.masonry-with-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    max-height: 1000px;
+  }
