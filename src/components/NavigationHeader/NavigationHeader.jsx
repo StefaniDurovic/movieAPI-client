@@ -8,7 +8,7 @@ export function NavigationHeader() {
   return (
     <Navbar className="navbar-color p-4" expand="lg">
       <Container>
-        <Navbar.Brand className="navbar-text" bsClass="" href="#home">Jessica Chastain Movies</Navbar.Brand>
+        <Navbar.Brand className="navbar-text" href="#home">Jessica Chastain Movies</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
