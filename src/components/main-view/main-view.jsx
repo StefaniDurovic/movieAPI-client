@@ -1,16 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-import { useState, useEffect } from "react";
-
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { NavigationHeader } from '../NavigationHeader/NavigationHeader';
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.css';
-import Container from 'react-bootstrap/Container';
 import './main-view.scss';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -69,8 +67,19 @@ class MainView extends React.Component {
     
     // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
     if (!user)
-      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} 
-      registered={(newUser) => this.registered(newUser)}/>;
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login"
+            element = {
+              <LoginView onLoggedIn={(user) => this.onLoggedIn(user)}
+              registered={(newUser) => this.registered(newUser)}/>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+
+      // return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} 
+      // registered={(newUser) => this.registered(newUser)}/>;
 
     if (selectedMovie)
       return (

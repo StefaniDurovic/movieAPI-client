@@ -12,8 +12,9 @@ export function NavigationHeader() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link className="navbar-text" href="#home">Profile</Nav.Link>
-            <Nav.Link className="navbar-text" href="#link">Movies</Nav.Link>
+            <Nav.Link className="navbar-text" href="#profile-view">Profile</Nav.Link>
+            <Nav.Link className="navbar-text" href="#movie-card">Movies</Nav.Link>
+            <Nav.Link className="navbar-text" href="#login-view">Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

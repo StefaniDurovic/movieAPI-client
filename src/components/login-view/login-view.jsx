@@ -19,7 +19,6 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
     /* Send a request to the server for authentication */
     axios.post("https://jessica-chastain-movies.herokuapp.com/login", {
         Username: username,
@@ -41,11 +40,11 @@ export function LoginView(props) {
   return (
     <Container>
         <Row className="justify-content-center">
-            <Col md={4}>
+          <Col md={4}>
                 <CardGroup style={{width:'22rem'}}>
                     <Card style={{marginTop:'9.375rem'}}>
                         <Card.Body>
-                            <Card.Title style={{marginBottom:'1.25rem'}}>Login</Card.Title>
+                            <Card.Title className="justify-content-center" style={{marginBottom:'1.50rem'}}>Jessica Chastain Movies Database</Card.Title>
                             <Form>
                               <Form.Group controlId="formUsername">
                                 <Form.Label>Username:</Form.Label>
@@ -56,7 +55,7 @@ export function LoginView(props) {
                                 <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
                               </Form.Group>
                               <Button variant="success" style={{marginTop:'1.25rem'}} type="submit" onClick={handleSubmit}>
-                                Submit
+                                Log in
                               </Button>
                             </Form>
                         </Card.Body>
