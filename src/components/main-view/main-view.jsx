@@ -66,7 +66,8 @@ class MainView extends React.Component {
     const { movies, selectedMovie, user } = this.state;
     
     // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
-    if (!user)
+    if (!user) 
+      return (
       <BrowserRouter>
         <Routes>
           <Route path="/login"
@@ -77,6 +78,7 @@ class MainView extends React.Component {
           />
         </Routes>
       </BrowserRouter>
+      )
 
       // return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} 
       // registered={(newUser) => this.registered(newUser)}/>;
