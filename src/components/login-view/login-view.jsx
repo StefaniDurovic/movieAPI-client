@@ -12,61 +12,67 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
 //function component
-export function LoginView(props) {
+export function LoginView({ onLoggedIn }) {
   //useState hook
-  const [ username, setUsername ] = useState('');
-  const [ password, setPassword ] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     /* Send a request to the server for authentication */
     axios.post("https://jessica-chastain-movies.herokuapp.com/login", {
-        Username: username,
-        Password: password,
-      }, {
-        'Content-Type': 'application/json',
-      }) 
+      Username: username,
+      Password: password,
+    }, {
+      'Content-Type': 'application/json',
+    })
       .then((response) => {
-        const data = response.data;
-        props.onLoggedIn(data);
+        let { user, token } = response.data;
+        user = {
+          "_id": user._id,
+          "Username": user.username,
+          "Email": user.Email,
+        }
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', user);
+        onLoggedIn(user);
       })
       .catch((error) => {
-        console.log("no such user", error);
+        console.log("Login failed! ", error);
+        alert("Login failed");
       });
   };
 
-    // props.onLoggedIn(username);
-
   return (
     <Container>
-        <Row className="justify-content-center">
-          <Col md={4}>
-                <CardGroup style={{width:'22rem'}}>
-                    <Card style={{marginTop:'9.375rem'}}>
-                        <Card.Body>
-                            <Card.Title className="justify-content-center" style={{marginBottom:'1.50rem'}}>Jessica Chastain Movies Database</Card.Title>
-                            <Form>
-                              <Form.Group controlId="formUsername">
-                                <Form.Label>Username:</Form.Label>
-                                <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
-                              </Form.Group>
-                              <Form.Group controlId="formPassword">
-                                <Form.Label style={{marginTop:'0.625rem'}}>Password:</Form.Label>
-                                <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
-                              </Form.Group>
-                              <Button variant="success" style={{marginTop:'1.25rem'}} type="submit" onClick={handleSubmit}>
-                                Log in
-                              </Button>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                </CardGroup>
-            </Col>
-        </Row>
+      <Row className="justify-content-center">
+        <Col md={4}>
+          <CardGroup style={{ width: '22rem' }}>
+            <Card style={{ marginTop: '9.375rem' }}>
+              <Card.Body>
+                <Card.Title className="justify-content-center" style={{ marginBottom: '1.50rem' }}>Jessica Chastain Movies Database</Card.Title>
+                <Form>
+                  <Form.Group controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+                  </Form.Group>
+                  <Form.Group controlId="formPassword">
+                    <Form.Label style={{ marginTop: '0.625rem' }}>Password:</Form.Label>
+                    <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+                  </Form.Group>
+                  <Button variant="success" style={{ marginTop: '1.25rem' }} type="submit" onClick={handleSubmit}>
+                    Log in
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      </Row>
     </Container>
   );
 }
 
-LoginView.PropTypes = {
-    onLoggedIn: PropTypes.func.isRequired
+LoginView.propTypes = {
+  onLoggedIn: PropTypes.func.isRequired
 };

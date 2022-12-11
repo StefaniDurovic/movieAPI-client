@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
@@ -12,122 +12,122 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './main-view.scss';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+const MainView = () => {
+  const [movies, setMovies] = useState([]);
+  const [user, setUser] = useState(null);
+  const [noUser, setnoUser] = useState('');
+  const [newSelectedMovie, setSelectedMovie] = useState('');
 
-//class component
-class MainView extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      movies: [],
-      selectedMovie: null,
-      user: null,
-      registered: true
-    };
-  }
-
-  keypressCallback(event) {
-    console.log(event.key);
-  }
-
-  componentDidMount() {
+  useEffect(() => {
+    let user = localStorage.getItem('user');
+    if (user) setUser(user);
+    // get movies from server without a token as it is not required for the endpoint.
     axios
       .get("https://jessica-chastain-movies.herokuapp.com/movies")
       .then((response) => {
-        this.setState({
-          movies: response.data,
-        });
+        setMovies(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }
-
-  //When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` property to that movie
-  setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie,
-    });
-  }
+  }, []);
 
   // When a user successfully logs in, this function updates the `user` property in state to that particular user
-  onLoggedIn(user) {
-    this.setState({
-      user,
-    });
+  onLoggedIn = (user) => {
+    setUser(user);
   }
 
-  registered(newUser) {
-    this.setState({
-        newUser
-    });
+  registered = (newUser) => {
+    setUser(newUser);
+  }
+ 
+  onMovieClick = (newSelectedMovie) => {
+    setSelectedMovie(newSelectedMovie);
   }
 
-  render() {
-    const { movies, selectedMovie, user } = this.state;
-    
-    // If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
-    if (!user) 
-      return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login"
-            element = {
-              <LoginView onLoggedIn={(user) => this.onLoggedIn(user)}
-              registered={(newUser) => this.registered(newUser)}/>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-      )
+  onLoggedOut = (noUser) => {
+    setnoUser(noUser);
+  }
 
-      // return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} 
-      // registered={(newUser) => this.registered(newUser)}/>;
 
-    if (selectedMovie)
-      return (
-        <Container>
-          <NavigationHeader/>
+  return (
+    <Container>
+      <Row className="justify-content-md-center">
+        <BrowserRouter>
+          <NavigationHeader />
+          <Routes>
+            <Route path="/signup"
+              element={
+                <>
+                  {user ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <Col md={5}>
+                      <RegistrationView registered={(newUser) => registered(newUser)}/>
+                    </Col>
+                  )}
+                </>
+              }
+            />
 
-          <Row className="justify-content-md-center">
-            <Col md={8}>
-              <MovieView
-                movie={selectedMovie}
-                onBackClick={(newSelectedMovie) => {
-                  this.setSelectedMovie(newSelectedMovie);
-                }}
-              />
-            </Col>
-          </Row>
-        </Container>
-      );
+            <Route path="/login"
+              element={
+                <>
+                  {user ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <Col md={8}>
+                      <LoginView onLoggedIn={(user) => onLoggedIn(user)} />
+                    </Col>
+                  )}
+                </>
+              }
+            />
 
-    if (movies.length === 0) {
-      // Before the movies have been loaded
-      return <div className="main-view"></div>;
-    } else {
-      return (
-
-        <Container>
-          <NavigationHeader/>
-          <div className="main-view">
-            <Row className="justify-content-md-center">
-                {movies.map((movie) => (
-                  <Col md={3}>
-                      <MovieCard
-                        key={movie._id}
-                        movie={movie}
-                        onMovieClick={(newSelectedMovie) => {
-                          this.setSelectedMovie(newSelectedMovie);
-                        }}
-                      />
+            <Route path="/"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <Col>The list is empty!</Col>
+                  ) : (
+                    <>
+                      {movies.map((movie) => (
+                        <Col md={3} key={movie._id}>
+                          <MovieCard
+                            movie={movie}
+                          />
+                        </Col>
+                      ))}
+                    </>
+                  )}
+                </>
+              }
+            />
+            
+            {/* tried making movie view work, not working  */}
+            {/* <Route path="/movies/:movieId"
+              element={
+                <>
+                  {movies.length !== 0 && localStorage.getItem("user") ? (
+                    <Col>
+                    <MovieView
+                      movie={movies.find((m) => m._id === match.params.movieId)}
+                      onBackClick={() => history.goBack()}
+                    />
                   </Col>
-                ))}
-            </Row>
-          </div>
-        </Container>
-      );
-    }
-  }
+                  ) : (
+                    <Col>The list is empty!</Col>
+                  ) }
+                </>
+              }
+            /> */}
+          </Routes>
+        </BrowserRouter>
+      </Row>
+    </Container>
+  )
 }
 
 export default MainView;

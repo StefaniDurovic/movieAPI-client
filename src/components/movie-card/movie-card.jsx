@@ -4,6 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './movie-card.scss';
 
+onMovieClick=(newSelectedMovie) => 
+  this.setSelectedMovie(newSelectedMovie);
+
+
 //class component
 export class MovieCard extends React.Component {
   render() {
