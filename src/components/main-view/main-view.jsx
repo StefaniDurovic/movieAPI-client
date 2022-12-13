@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { RegistrationView } from '../registration-view/registration-view';
-import { LoginView } from '../login-view/login-view';
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
-import { NavigationHeader } from '../NavigationHeader/NavigationHeader';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import 'bootstrap/dist/css/bootstrap.css';
-import './main-view.scss';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { RegistrationView } from "../registration-view/registration-view";
+import { LoginView } from "../login-view/login-view";
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view";
+import { ProfileView } from '../profile-view/profile-view';
+import { NavigationHeader } from "../NavigationHeader/NavigationHeader";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import "./main-view.scss";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(null);
-  const [noUser, setnoUser] = useState('');
-  const [newSelectedMovie, setSelectedMovie] = useState('');
+  // const [newSelectedMovie, setSelectedMovie] = useState('');
 
   useEffect(() => {
-    let user = localStorage.getItem('user');
+    let user = localStorage.getItem("user");
     if (user) setUser(user);
     // get movies from server without a token as it is not required for the endpoint.
     axios
@@ -35,42 +34,45 @@ const MainView = () => {
   // When a user successfully logs in, this function updates the `user` property in state to that particular user
   onLoggedIn = (user) => {
     setUser(user);
-  }
+  };
 
-  registered = (newUser) => {
-    setUser(newUser);
-  }
- 
-  onMovieClick = (newSelectedMovie) => {
-    setSelectedMovie(newSelectedMovie);
-  }
+  // registered = (newUser) => {
+  //   setUser(newUser);
+  // }
 
-  onLoggedOut = (noUser) => {
-    setnoUser(noUser);
-  }
+  // onMovieClick = (newSelectedMovie) => {
+  //   setSelectedMovie(newSelectedMovie);
+  // }
 
+  onLoggedOut = (user) => {
+    setUser(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+  };
 
   return (
     <Container>
       <Row className="justify-content-md-center">
         <BrowserRouter>
-          <NavigationHeader />
+          <NavigationHeader user={user} onLoggedOut={() => onLoggedOut()} />
           <Routes>
-            <Route path="/signup"
+            <Route
+              path="/signup"
               element={
                 <>
                   {user ? (
                     <Navigate to="/" />
                   ) : (
                     <Col md={5}>
-                      <RegistrationView registered={(newUser) => registered(newUser)}/>
+                      <RegistrationView />
                     </Col>
                   )}
                 </>
               }
             />
 
-            <Route path="/login"
+            <Route
+              path="/login"
               element={
                 <>
                   {user ? (
@@ -84,7 +86,8 @@ const MainView = () => {
               }
             />
 
-            <Route path="/"
+            <Route
+              path="/"
               element={
                 <>
                   {!user ? (
@@ -95,9 +98,7 @@ const MainView = () => {
                     <>
                       {movies.map((movie) => (
                         <Col md={3} key={movie._id}>
-                          <MovieCard
-                            movie={movie}
-                          />
+                          <MovieCard movie={movie} />
                         </Col>
                       ))}
                     </>
@@ -105,29 +106,45 @@ const MainView = () => {
                 </>
               }
             />
-            
-            {/* tried making movie view work, not working  */}
-            {/* <Route path="/movies/:movieId"
+
+            <Route
+              path="/profile"
               element={
                 <>
-                  {movies.length !== 0 && localStorage.getItem("user") ? (
-                    <Col>
-                    <MovieView
-                      movie={movies.find((m) => m._id === match.params.movieId)}
-                      onBackClick={() => history.goBack()}
-                    />
-                  </Col>
-                  ) : (
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
                     <Col>The list is empty!</Col>
-                  ) }
+                  ) : (
+                    <Col>
+                      <ProfileView user={user} />
+                    </Col>
+                  )}
                 </>
               }
-            /> */}
+            />
+
+            <Route
+              path="/movies/:movieId"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <Col>The list is empty!</Col>
+                  ) : (
+                    <Col>
+                      <MovieView movies={movies} />
+                    </Col>
+                  )}
+                </>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
 export default MainView;

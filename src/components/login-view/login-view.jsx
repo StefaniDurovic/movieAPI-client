@@ -8,7 +8,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './login-view.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
 //function component
@@ -45,10 +44,10 @@ export function LoginView({ onLoggedIn }) {
 
   return (
     <Container>
-      <Row className="justify-content-center">
+      <Row>
         <Col md={4}>
           <CardGroup style={{ width: '22rem' }}>
-            <Card style={{ marginTop: '9.375rem' }}>
+            <Card className="mt-5">
               <Card.Body>
                 <Card.Title className="justify-content-center" style={{ marginBottom: '1.50rem' }}>Jessica Chastain Movies Database</Card.Title>
                 <Form>

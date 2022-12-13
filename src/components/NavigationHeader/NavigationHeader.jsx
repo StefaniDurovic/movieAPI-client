@@ -7,8 +7,8 @@ import './NavigationHeader.scss';
 
 export function NavigationHeader({user, onLoggedOut}) {
   return (
-    <Navbar className="navbar-color p-4" expand="lg">
-      <Container>
+    <Navbar fluid className="navbar-color p-4" expand="lg">
+      <Container fluid>
         <Navbar.Brand as={Link} to="/">Jessica Chastain Movies</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -22,6 +22,7 @@ export function NavigationHeader({user, onLoggedOut}) {
               {user && (
                 <>
                   <Nav.Link as={Link} to="/">Movies</Nav.Link>
+                  <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                   <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
                 </>
               )}

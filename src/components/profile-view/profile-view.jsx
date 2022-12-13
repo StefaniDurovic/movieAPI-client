@@ -17,7 +17,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 
 
-export function ProfileView () {
+export function ProfileView (props) {
     const [user, setUser] = useState ('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -27,9 +27,10 @@ export function ProfileView () {
     let favoriteMoviesList = movies.filter(movie => user.FavoriteMovies.includes(movie._id));
 
     getUser = (token) => {
-        const Username = localStorage.getItem("user");
+        const user = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
         axios
-          .get(`https://jessica-chastain-movies.herokuapp.com/users/${Username}`, {
+          .get(`https://jessica-chastain-movies.herokuapp.com/users/${user}`, {
             headers: { Authorization: `Bearer ${token}` },
           })
           .then((response) => {
@@ -47,12 +48,12 @@ export function ProfileView () {
       };
 
     onRemoveFavorite = (movie) => {
-        const username = localStorage.getItem("user");
+        const user = localStorage.getItem("user");
         const token = localStorage.getItem("token");
         console.log(movie)
         axios
           .delete(
-            `https://jessica-chastain-movies.herokuapp.com/users/${username}/movies/${movie}`,
+            `https://jessica-chastain-movies.herokuapp.com/users/${user}/movies/${movie}`,
             { headers: { Authorization: `Bearer ${token}` } }
           )
           .then((response) => {
@@ -71,16 +72,16 @@ export function ProfileView () {
         this.setState({
           user: null,
         });
-        window.open("/", "_self");
+        window.open("/login", "_self");
       };
 
     editUser = (e) => {
         e.preventDefault();
-        const Username = localStorage.getItem("user");
+        const user = localStorage.getItem("user");
         const token = localStorage.getItem("token");
         axios
           .put(
-            `https://jessica-chastain-movies.herokuapp.com/users/${Username}`,
+            `https://jessica-chastain-movies.herokuapp.com/users/${user}`,
             {
               Username: this.state.Username,
               Password: this.state.Password,
@@ -105,7 +106,7 @@ export function ProfileView () {
             console.log(data);
             console.log(this.state.Username);
             alert("Profile is updated!");
-            window.open(`/users/${Username}`, "_self");
+            window.open(`/users/${user}`, "_self");
           })
           .catch(function (error) {
             console.error(error);
