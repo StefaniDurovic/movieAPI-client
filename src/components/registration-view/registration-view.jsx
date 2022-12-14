@@ -18,7 +18,7 @@ export function RegistrationView() {
 
     const handleSignup = (e) => {
       e.preventDefault();
-      axios.post("https://jessica-chastain-movies.herokuapp.com/signup", {
+      axios.post("https://jessica-chastain-movies.herokuapp.com/users", {
         Username: username,
         Password: password,
         Email: email,
