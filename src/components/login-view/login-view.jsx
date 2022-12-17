@@ -27,11 +27,12 @@ export function LoginView({ onLoggedIn }) {
     })
       .then((response) => {
         let { user, token } = response.data;
-        user = {
-          "_id": user._id,
-          "Username": user.username,
-          "Email": user.Email,
-        }
+        // user = {
+        //   "_id": user._id,
+        //   "Username": user.Username,
+        //   "Email": user.Email,
+        //   "favouriteMovies":user.FavoriteMovies
+        // }
         localStorage.setItem('token', token);
         localStorage.setItem('user', user);
         onLoggedIn(user);

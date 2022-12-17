@@ -5,6 +5,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 // import { ProfileView } from '../profile-view/profile-view';
+import { MyProfileView} from '../profile-view/profile-view';
 import { NavigationHeader } from "../NavigationHeader/NavigationHeader";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -117,12 +118,12 @@ const MainView = () => {
                     <Col>The list is empty!</Col>
                   ) : (
                     <Col>
-                      <ProfileView user={user} />
+                      <ProfileView user={user} movie={movie}/>
                     </Col>
                   )}
                 </>
               }
-            /> */}
+            />  */}
 
             <Route
               path="/movies/:movieId"
