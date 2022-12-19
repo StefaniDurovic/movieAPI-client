@@ -1,23 +1,75 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import "./profile-view.scss";
 
-export function FavoriteMovies(favoriteMoviesList) {
-    return ( 
-        <div>
-            <h2>Favorite movies</h2>
-            {favoriteMoviesList.map ((movie) => {
-                return (
-                    <div key={movies._id}>
-                        <img src={movies.ImagePath}/>
-                        <Link to={`/movies/${movies._id}`}>
-                            <h4>{movies.Title}</h4>
-                        </Link>
-                        <button variant="success" onClick={() => onRemoveFavorite(movies._id)}>Remove from list</button>
-                    </div>
-                )
-            }
-            )}
-        </div>
-     );
+export function FavoriteMovies(props) {
+  const unfavorite = (e, movie_id) => {
+    console.log(movie_id);
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    axios
+      .delete(
+        `https://jessica-chastain-movies.herokuapp.com/users/${user.Username}/movies/${movie_id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        arr = props.favoriteMoviesList.filter((item) => item._id !== movie_id);
+        user.FavoriteMovies = arr;
+        localStorage.setItem("user", JSON.stringify(user));
+        console.log(response);
+        alert(
+          `Movie has been removed from ${user.Username}\'s favorite movie list!`
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return (
+    <div>
+      <Row className="justify-content-center">
+        <Col>
+          <h4>Favorite movies</h4>
+        </Col>
+      </Row>
+      {props.favoriteMoviesList.map((movie) => {
+        return (
+          <Col md={3}>
+            <Card className="mt-3 masonry-with-flex">
+              <Card.Img
+                variant="top"
+                className="movie-card"
+                src={movie.ImagePath}
+              />
+              <Card.Body className="movie-card">
+                <Card.Title>{movie.Title}</Card.Title>
+                <Card.Text>{movie.Description}</Card.Text>
+                <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+                  <Button variant="success">Open</Button>
+                </Link>
+
+                <Button
+                  variant="success"
+                  type="button"
+                  className="mt-2"
+                  onClick={(event) => unfavorite(event, movie._id)}
+                >
+                  Remove from Favorites
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        );
+      })}
+    </div>
+  );
 }
-

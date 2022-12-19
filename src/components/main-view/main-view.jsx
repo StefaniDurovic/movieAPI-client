@@ -5,7 +5,7 @@ import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 // import { ProfileView } from '../profile-view/profile-view';
-import { MyProfileView} from '../profile-view/profile-view';
+import { MyProfileView } from "../profile-view/MyProfileView";
 import { NavigationHeader } from "../NavigationHeader/NavigationHeader";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -15,17 +15,29 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 const MainView = () => {
   const [movies, setMovies] = useState([]);
+  const [moviesDefault, setMoviesDefault] = useState([]);
   const [user, setUser] = useState(null);
-  // const [newSelectedMovie, setSelectedMovie] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value.toLowerCase());
+  };
 
   useEffect(() => {
-    let user = localStorage.getItem("user");
+    const results = moviesDefault.filter((movie) =>
+      movie.Title.toLowerCase().includes(searchTerm)
+    );
+    setMovies(results);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    let user = JSON.parse(localStorage.getItem("user"));
     if (user) setUser(user);
     // get movies from server without a token as it is not required for the endpoint.
     axios
       .get("https://jessica-chastain-movies.herokuapp.com/movies")
       .then((response) => {
         setMovies(response.data);
+        setMoviesDefault(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -36,14 +48,6 @@ const MainView = () => {
   onLoggedIn = (user) => {
     setUser(user);
   };
-
-  // registered = (newUser) => {
-  //   setUser(newUser);
-  // }
-
-  // onMovieClick = (newSelectedMovie) => {
-  //   setSelectedMovie(newSelectedMovie);
-  // }
 
   onLoggedOut = (user) => {
     setUser(null);
@@ -59,17 +63,7 @@ const MainView = () => {
           <Routes>
             <Route
               path="/signup"
-              element={
-                <>
-                  {user ? (
-                    <Navigate to="/" />
-                  ) : (
-                    <Col md={5}>
-                      <RegistrationView />
-                    </Col>
-                  )}
-                </>
-              }
+              element={<>{user ? <Navigate to="/" /> : <RegistrationView />}</>}
             />
 
             <Route
@@ -79,9 +73,7 @@ const MainView = () => {
                   {user ? (
                     <Navigate to="/" />
                   ) : (
-                    <Col md={8}>
-                      <LoginView onLoggedIn={(user) => onLoggedIn(user)} />
-                    </Col>
+                    <LoginView onLoggedIn={(user) => onLoggedIn(user)} />
                   )}
                 </>
               }
@@ -93,10 +85,14 @@ const MainView = () => {
                 <>
                   {!user ? (
                     <Navigate to="/login" replace />
-                  ) : movies.length === 0 ? (
-                    <Col>The list is empty!</Col>
                   ) : (
                     <>
+                      <input
+                        type="text"
+                        placeholder="Search"
+                        value={searchTerm}
+                        onChange={handleChange}
+                      />
                       {movies.map((movie) => (
                         <Col md={3} key={movie._id}>
                           <MovieCard movie={movie} />
@@ -108,22 +104,18 @@ const MainView = () => {
               }
             />
 
-            {/* <Route
+            <Route
               path="/profile"
               element={
                 <>
                   {!user ? (
                     <Navigate to="/login" replace />
-                  ) : movies.length === 0 ? (
-                    <Col>The list is empty!</Col>
                   ) : (
-                    <Col>
-                      <ProfileView user={user} movie={movie}/>
-                    </Col>
+                    <MyProfileView user={user} movies={movies} />
                   )}
                 </>
               }
-            />  */}
+            />
 
             <Route
               path="/movies/:movieId"
