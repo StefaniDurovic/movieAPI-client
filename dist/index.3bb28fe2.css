@@ -12032,7 +12032,9 @@ textarea.form-control-lg {
 
 
 
-
+.profile-text {
+  font-family: Source Code Pro, monospace;
+}
 
 .card-body {
   color: #cad178;

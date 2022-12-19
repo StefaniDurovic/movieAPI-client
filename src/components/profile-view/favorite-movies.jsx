@@ -36,15 +36,15 @@ export function FavoriteMovies(props) {
 
   return (
     <div>
-      <Row className="justify-content-center">
-        <Col>
+      <Row >
+        <Col className="profile-text d-flex align-items-center justify-content-center mt-5">
           <h4>Favorite movies</h4>
         </Col>
       </Row>
       {props.favoriteMoviesList.map((movie) => {
         return (
-          <Col md={3}>
-            <Card className="mt-3 masonry-with-flex">
+          <Col md={3} className="d-flex align-items-center justify-content-center mt-4">
+            <Card className="mt-3 flex-fill">
               <Card.Img
                 variant="top"
                 className="movie-card"
@@ -52,9 +52,8 @@ export function FavoriteMovies(props) {
               />
               <Card.Body className="movie-card">
                 <Card.Title>{movie.Title}</Card.Title>
-                <Card.Text>{movie.Description}</Card.Text>
                 <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                  <Button variant="success">Open</Button>
+                  <Button variant="success" className="mt-2">Open</Button>
                 </Link>
 
                 <Button

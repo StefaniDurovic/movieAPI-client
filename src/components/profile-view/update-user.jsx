@@ -42,11 +42,11 @@ export function UpdateUser({ Username, Email, Birthday, Password }) {
   };
 
   return (
-    <Container>
+    <Container className="d-flex align-items-center justify-content-center">
       <Row>
         <Col md={4}>
           <CardGroup style={{ width: "22rem" }}>
-            <Card className="mt-5">
+            <Card className="my-5">
               <Card.Body>
                 <Card.Title
                   className="justify-content-center"

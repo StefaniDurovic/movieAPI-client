@@ -50,7 +50,7 @@ export function LoginView({ onLoggedIn }) {
   };
 
   return (
-    <Container>
+    <Container className="d-flex align-items-center justify-content-center">
       <Row>
         <Col>
           <CardGroup style={{ width: "22rem" }}>

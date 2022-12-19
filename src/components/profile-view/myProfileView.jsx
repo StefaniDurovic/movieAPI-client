@@ -5,6 +5,7 @@ import { UpdateUser } from "../profile-view/update-user";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import "./profile-view.scss";
 
 export function MyProfileView(props) {
   console.log(props.movies);
@@ -19,11 +20,11 @@ export function MyProfileView(props) {
     <Container>
       <Row className="justify-content-center">
         <Col md={3}>
-          <h2>Your info</h2>
+          <h2 className="profile-text d-flex align-items-center justify-content-center mt-4">Your info</h2>
         </Col>
       </Row>
 
-      <Row className="justify-content-center">
+      <Row>
         <Col>
           <UserInfo
             Username={props.user.Username}
@@ -33,8 +34,8 @@ export function MyProfileView(props) {
         </Col>
       </Row>
 
-      <Row className="justify-content-center">
-        <Col >
+      <Row>
+        <Col>
           <FavoriteMovies favoriteMoviesList={fav_movies} />
         </Col>
       </Row>

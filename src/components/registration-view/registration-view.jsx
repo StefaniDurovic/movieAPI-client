@@ -38,7 +38,7 @@ export function RegistrationView() {
   };
 
   return (
-    <Container>
+    <Container className="d-flex align-items-center justify-content-center">
       <Row>
         <Col md={4}>
           <CardGroup style={{ width: "22rem" }}>
