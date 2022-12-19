@@ -35,15 +35,11 @@ export function FavoriteMovies(props) {
   };
 
   return (
-    <div>
-      <Row >
-        <Col className="profile-text d-flex align-items-center justify-content-center mt-5">
-          <h4>Favorite movies</h4>
-        </Col>
-      </Row>
+    <Container className="d-flex align-items-center justify-content-center">
+      
       {props.favoriteMoviesList.map((movie) => {
         return (
-          <Col md={3} className="d-flex align-items-center justify-content-center mt-4">
+          <Col md={3} className="d-flex align-items-center justify-content-center">
             <Card className="mt-3 flex-fill">
               <Card.Img
                 variant="top"
@@ -69,6 +65,6 @@ export function FavoriteMovies(props) {
           </Col>
         );
       })}
-    </div>
+    </Container>
   );
 }

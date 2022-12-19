@@ -46,7 +46,7 @@ export function UpdateUser({ Username, Email, Birthday, Password }) {
       <Row>
         <Col md={4}>
           <CardGroup style={{ width: "22rem" }}>
-            <Card className="my-5">
+            <Card className="mt-4 mb-5">
               <Card.Body>
                 <Card.Title
                   className="justify-content-center"

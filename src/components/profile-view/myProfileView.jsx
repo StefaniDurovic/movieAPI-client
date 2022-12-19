@@ -34,9 +34,21 @@ export function MyProfileView(props) {
         </Col>
       </Row>
 
+      <Row >
+        <Col className="profile-text d-flex align-items-center justify-content-center mt-5">
+          <h4>Favorite movies</h4>
+        </Col>
+      </Row>
+
       <Row>
         <Col>
           <FavoriteMovies favoriteMoviesList={fav_movies} />
+        </Col>
+      </Row>
+
+      <Row className="mt-3">
+        <Col className="profile-text d-flex align-items-center justify-content-center mt-5">
+          <h4>Want to change something?</h4>
         </Col>
       </Row>
 
