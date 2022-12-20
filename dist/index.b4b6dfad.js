@@ -27122,7 +27122,7 @@ var _loginView = require("../login-view/login-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
 // import { ProfileView } from '../profile-view/profile-view';
-var _myProfileView = require("../profile-view/MyProfileView");
+var _myProfileView = require("../profile-view/myProfileView");
 var _navigationHeader = require("../NavigationHeader/NavigationHeader");
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
@@ -27306,7 +27306,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","../registration-view/registration-view":"3U8r7","../login-view/login-view":"9YtA0","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../NavigationHeader/NavigationHeader":"28Wmf","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","./main-view.scss":"eBaMl","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../profile-view/MyProfileView":"cwu6Y"}],"jo6P5":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","../registration-view/registration-view":"3U8r7","../login-view/login-view":"9YtA0","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../NavigationHeader/NavigationHeader":"28Wmf","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","./main-view.scss":"eBaMl","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../profile-view/myProfileView":"jzFyZ"}],"jo6P5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _axiosJsDefault.default));
@@ -43329,11 +43329,11 @@ function removeClass(element, className) {
 }
 exports.default = removeClass;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cWFSu":[function() {},{}],"eBaMl":[function() {},{}],"cwu6Y":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$ad7d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cWFSu":[function() {},{}],"eBaMl":[function() {},{}],"jzFyZ":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$a673 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$ad7d.prelude(module);
+$parcel$ReactRefreshHelpers$a673.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -43368,17 +43368,17 @@ function MyProfileView(props) {
                         className: "profile-text d-flex align-items-center justify-content-center mt-4",
                         children: "Your info"
                     }, void 0, false, {
-                        fileName: "src/components/profile-view/MyProfileView.jsx",
+                        fileName: "src/components/profile-view/myProfileView.jsx",
                         lineNumber: 23,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
-                    fileName: "src/components/profile-view/MyProfileView.jsx",
+                    fileName: "src/components/profile-view/myProfileView.jsx",
                     lineNumber: 22,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
-                fileName: "src/components/profile-view/MyProfileView.jsx",
+                fileName: "src/components/profile-view/myProfileView.jsx",
                 lineNumber: 21,
                 columnNumber: 7
             }, this),
@@ -43389,17 +43389,17 @@ function MyProfileView(props) {
                         Email: props.user.Email,
                         Birthday: props.user.Birthday
                     }, void 0, false, {
-                        fileName: "src/components/profile-view/MyProfileView.jsx",
+                        fileName: "src/components/profile-view/myProfileView.jsx",
                         lineNumber: 29,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
-                    fileName: "src/components/profile-view/MyProfileView.jsx",
+                    fileName: "src/components/profile-view/myProfileView.jsx",
                     lineNumber: 28,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
-                fileName: "src/components/profile-view/MyProfileView.jsx",
+                fileName: "src/components/profile-view/myProfileView.jsx",
                 lineNumber: 27,
                 columnNumber: 7
             }, this),
@@ -43409,17 +43409,17 @@ function MyProfileView(props) {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                         children: "Favorite movies"
                     }, void 0, false, {
-                        fileName: "src/components/profile-view/MyProfileView.jsx",
+                        fileName: "src/components/profile-view/myProfileView.jsx",
                         lineNumber: 39,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
-                    fileName: "src/components/profile-view/MyProfileView.jsx",
+                    fileName: "src/components/profile-view/myProfileView.jsx",
                     lineNumber: 38,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
-                fileName: "src/components/profile-view/MyProfileView.jsx",
+                fileName: "src/components/profile-view/myProfileView.jsx",
                 lineNumber: 37,
                 columnNumber: 7
             }, this),
@@ -43428,17 +43428,17 @@ function MyProfileView(props) {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoriteMovies.FavoriteMovies), {
                         favoriteMoviesList: fav_movies
                     }, void 0, false, {
-                        fileName: "src/components/profile-view/MyProfileView.jsx",
+                        fileName: "src/components/profile-view/myProfileView.jsx",
                         lineNumber: 45,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
-                    fileName: "src/components/profile-view/MyProfileView.jsx",
+                    fileName: "src/components/profile-view/myProfileView.jsx",
                     lineNumber: 44,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
-                fileName: "src/components/profile-view/MyProfileView.jsx",
+                fileName: "src/components/profile-view/myProfileView.jsx",
                 lineNumber: 43,
                 columnNumber: 7
             }, this),
@@ -43449,17 +43449,17 @@ function MyProfileView(props) {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
                         children: "Want to change something?"
                     }, void 0, false, {
-                        fileName: "src/components/profile-view/MyProfileView.jsx",
+                        fileName: "src/components/profile-view/myProfileView.jsx",
                         lineNumber: 51,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
-                    fileName: "src/components/profile-view/MyProfileView.jsx",
+                    fileName: "src/components/profile-view/myProfileView.jsx",
                     lineNumber: 50,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
-                fileName: "src/components/profile-view/MyProfileView.jsx",
+                fileName: "src/components/profile-view/myProfileView.jsx",
                 lineNumber: 49,
                 columnNumber: 7
             }, this),
@@ -43471,23 +43471,23 @@ function MyProfileView(props) {
                         Birthday: props.user.Birthday,
                         Password: props.user.Password
                     }, void 0, false, {
-                        fileName: "src/components/profile-view/MyProfileView.jsx",
+                        fileName: "src/components/profile-view/myProfileView.jsx",
                         lineNumber: 57,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
-                    fileName: "src/components/profile-view/MyProfileView.jsx",
+                    fileName: "src/components/profile-view/myProfileView.jsx",
                     lineNumber: 56,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
-                fileName: "src/components/profile-view/MyProfileView.jsx",
+                fileName: "src/components/profile-view/myProfileView.jsx",
                 lineNumber: 55,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
-        fileName: "src/components/profile-view/MyProfileView.jsx",
+        fileName: "src/components/profile-view/myProfileView.jsx",
         lineNumber: 20,
         columnNumber: 5
     }, this);
@@ -43496,12 +43496,12 @@ _c = MyProfileView;
 var _c;
 $RefreshReg$(_c, "MyProfileView");
 
-  $parcel$ReactRefreshHelpers$ad7d.postlude(module);
+  $parcel$ReactRefreshHelpers$a673.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../profile-view/favorite-movies":"dTTQH","../profile-view/user-info":"66eot","../profile-view/update-user":"2SBwg","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./profile-view.scss":"eyKYH"}],"dTTQH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../profile-view/favorite-movies":"dTTQH","../profile-view/user-info":"66eot","../profile-view/update-user":"2SBwg","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","./profile-view.scss":"eyKYH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dTTQH":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8767 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -43765,7 +43765,7 @@ $RefreshReg$(_c, "UserInfo");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./profile-view.scss":"eyKYH"}],"eyKYH":[function() {},{}],"2SBwg":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","./profile-view.scss":"eyKYH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eyKYH":[function() {},{}],"2SBwg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$95d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
