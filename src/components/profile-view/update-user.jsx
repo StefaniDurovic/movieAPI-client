@@ -32,12 +32,12 @@ export function UpdateUser({ Username, Email, Birthday, Password }) {
       .then((response) => {
         const data = response.data;
         console.log(data);
-        alert("Successfully updated.");
-        window.open("/login", "_self");
+        alert("Successfully updated, please log in again.");
+        onLoggedOut();
       })
       .catch((error) => {
-        console.log("Update failed! ", error);
-        alert("Update failed");
+        console.log("Update failed", error);
+        alert("Update failed.");
       });
   };
 

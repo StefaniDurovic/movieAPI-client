@@ -31380,7 +31380,7 @@ function RegistrationView() {
         }).then((response)=>{
             const data = response.data;
             console.log(data);
-            alert("Successfully registered, please sign in.");
+            alert("Successfully registered, please log in.");
             window.open("/login", "_self");
         }).catch((error)=>{
             console.log("SignUp failed! ", error);
@@ -31448,7 +31448,7 @@ function RegistrationView() {
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                                                    type: "text",
+                                                    type: "password",
                                                     onChange: (e)=>setPassword(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "src/components/registration-view/registration-view.jsx",
@@ -31496,7 +31496,7 @@ function RegistrationView() {
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
-                                                    type: "text",
+                                                    type: "date",
                                                     onChange: (e)=>setBirthday(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "src/components/registration-view/registration-view.jsx",
@@ -43815,11 +43815,11 @@ function UpdateUser({ Username , Email , Birthday , Password  }) {
         }).then((response)=>{
             const data = response.data;
             console.log(data);
-            alert("Successfully updated.");
-            window.open("/login", "_self");
+            alert("Successfully updated, please log in again.");
+            onLoggedOut();
         }).catch((error)=>{
-            console.log("Update failed! ", error);
-            alert("Update failed");
+            console.log("Update failed", error);
+            alert("Update failed.");
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {

@@ -28,7 +28,7 @@ export function RegistrationView() {
       .then((response) => {
         const data = response.data;
         console.log(data);
-        alert("Successfully registered, please sign in.");
+        alert("Successfully registered, please log in.");
         window.open("/login", "_self");
       })
       .catch((error) => {
@@ -62,7 +62,7 @@ export function RegistrationView() {
                   <Form.Group controlId="formPassword">
                     <Form.Label>Password:</Form.Label>
                     <Form.Control
-                      type="text"
+                      type="password"
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </Form.Group>
@@ -78,7 +78,7 @@ export function RegistrationView() {
                   <Form.Group controlId="formBirthday">
                     <Form.Label>Birthday:</Form.Label>
                     <Form.Control
-                      type="text"
+                      type="date"
                       onChange={(e) => setBirthday(e.target.value)}
                     />
                   </Form.Group>
