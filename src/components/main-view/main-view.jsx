@@ -45,11 +45,11 @@ const MainView = () => {
   }, []);
 
   // When a user successfully logs in, this function updates the `user` property in state to that particular user
-  onLoggedIn = (user) => {
+  const onLoggedIn = (user) => {
     setUser(user);
   };
 
-  onLoggedOut = (user) => {
+  const onLoggedOut = (user) => {
     setUser(null);
     localStorage.removeItem("user");
     localStorage.removeItem("token");
