@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
@@ -9,6 +9,11 @@ import Card from "react-bootstrap/Card";
 import "./profile-view.scss";
 
 export function FavoriteMovies(props) {
+  const all_movies = props.all_movies;
+  const fav_id_list = JSON.parse(localStorage.getItem("user")).FavoriteMovies;
+  const fav_movies = all_movies.filter((x) => fav_id_list.includes(x._id));
+  const [movies, setMovies] = useState(fav_movies);
+
   const unfavorite = (e, movie_id) => {
     console.log(movie_id);
     const token = localStorage.getItem("token");
@@ -21,10 +26,15 @@ export function FavoriteMovies(props) {
         }
       )
       .then((response) => {
-        arr = props.favoriteMoviesList.filter((item) => item._id !== movie_id);
-        user.FavoriteMovies = arr;
+        arr = movies.filter((item) => item._id !== movie_id);
+        console.log("Fnaodsfnaslidk");
+        let fav_id_listdasdfsa = arr.map((x) => x._id);
+        console.log(fav_id_listdasdfsa);
+        user.FavoriteMovies = fav_id_listdasdfsa;
         localStorage.setItem("user", JSON.stringify(user));
         console.log(response);
+
+        setMovies(arr);
         alert(
           `Movie has been removed from ${user.Username}\'s favorite movie list!`
         );
@@ -36,10 +46,13 @@ export function FavoriteMovies(props) {
 
   return (
     <Container className="d-flex align-items-center justify-content-center">
-      
-      {props.favoriteMoviesList.map((movie) => {
+      {movies.map((movie) => {
         return (
-          <Col md={3} className="d-flex align-items-center justify-content-center">
+          <Col
+            md={3}
+            key={movie.Title}
+            className="d-flex align-items-center justify-content-center"
+          >
             <Card className="mt-3 flex-fill">
               <Card.Img
                 variant="top"
@@ -49,7 +62,9 @@ export function FavoriteMovies(props) {
               <Card.Body className="movie-card">
                 <Card.Title>{movie.Title}</Card.Title>
                 <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-                  <Button variant="success" className="mt-2">Open</Button>
+                  <Button variant="success" className="mt-2">
+                    Open
+                  </Button>
                 </Link>
 
                 <Button

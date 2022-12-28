@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import "./profile-view.scss";
 
 export function UserInfo({ Username, Email, Birthday }) {
+  const datum = new Date(Birthday).toLocaleDateString("de-DE");
   return (
     <>
       <Container>
@@ -20,7 +21,7 @@ export function UserInfo({ Username, Email, Birthday }) {
             </div>
             <div className="profile-text d-flex align-items-center">
               <span className="label bold-text">Birthday: </span>
-              <span className="value">{Birthday}</span>
+              <span className="value">{datum}</span>
             </div>
           </Col>
         </Row>
