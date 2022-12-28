@@ -13,9 +13,11 @@ export function UpdateUser({ Username, Email, Birthday, Password }) {
   const [password, setPassword] = useState(Password);
   const [email, setEmail] = useState(Email);
   const [birthday, setBirthday] = useState(Birthday);
+  const datum = new Date(Birthday).toLocaleDateString("de-DE");
 
   const editUser = (e) => {
     e.preventDefault();
+    
     axios
       .put(
         "https://jessica-chastain-movies.herokuapp.com/users/" + Username,
@@ -85,7 +87,7 @@ export function UpdateUser({ Username, Email, Birthday, Password }) {
                     <Form.Label>Birthday:</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder={birthday}
+                      placeholder={datum}
                       onChange={(e) => setBirthday(e.target.value)}
                     />
                   </Form.Group>

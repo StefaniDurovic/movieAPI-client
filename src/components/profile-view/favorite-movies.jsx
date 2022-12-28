@@ -27,10 +27,9 @@ export function FavoriteMovies(props) {
       )
       .then((response) => {
         arr = movies.filter((item) => item._id !== movie_id);
-        console.log("Fnaodsfnaslidk");
-        let fav_id_listdasdfsa = arr.map((x) => x._id);
-        console.log(fav_id_listdasdfsa);
-        user.FavoriteMovies = fav_id_listdasdfsa;
+        let fav_id_list = arr.map((x) => x._id);
+        console.log(fav_id_list);
+        user.FavoriteMovies = fav_id_list;
         localStorage.setItem("user", JSON.stringify(user));
         console.log(response);
 
