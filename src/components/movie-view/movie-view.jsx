@@ -70,13 +70,6 @@ export const MovieView = ({ movies }) => {
             <span className="label bold-text">Actors: </span>
             <span className="value">{movie.Actors}</span>
           </div>
-          <div>
-            <span className="label bold-text">URL to send post request: </span>
-            <span className="value">
-              https://jessica-chastain-movies.herokuapp.com/users/{username}
-              /movies/{movieId}
-            </span>
-          </div>
           <Link to="/">
             <Button variant="success" className="my-4" type="button">
               Back
