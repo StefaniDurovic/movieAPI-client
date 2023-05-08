@@ -68,7 +68,7 @@ export const MovieView = ({ movies }) => {
           </div>
           <div className="movie-description">
             <span className="label bold-text">Actors: </span>
-            <span className="value">{movie.Actors}</span>
+            <span className="value">{movie.Actors.join(", ")}</span>
           </div>
           <Link to="/">
             <Button variant="success" className="my-4" type="button">

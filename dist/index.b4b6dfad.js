@@ -39358,7 +39358,7 @@ const MovieView = ({ movies  })=>{
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                     className: "value",
-                                    children: movie.Actors
+                                    children: movie.Actors.join(", ")
                                 }, void 0, false, {
                                     fileName: "src/components/movie-view/movie-view.jsx",
                                     lineNumber: 71,
@@ -39370,35 +39370,6 @@ const MovieView = ({ movies  })=>{
                             lineNumber: 69,
                             columnNumber: 11
                         }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                    className: "label bold-text",
-                                    children: "URL to send post request: "
-                                }, void 0, false, {
-                                    fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 74,
-                                    columnNumber: 13
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                    className: "value",
-                                    children: [
-                                        "https://jessica-chastain-movies.herokuapp.com/users/",
-                                        username,
-                                        "/movies/",
-                                        movieId
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 75,
-                                    columnNumber: 13
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 73,
-                            columnNumber: 11
-                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                             to: "/",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -39408,12 +39379,12 @@ const MovieView = ({ movies  })=>{
                                 children: "Back"
                             }, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 81,
+                                lineNumber: 74,
                                 columnNumber: 13
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 80,
+                            lineNumber: 73,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -39424,7 +39395,7 @@ const MovieView = ({ movies  })=>{
                             children: "Add to Favorites"
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 86,
+                            lineNumber: 79,
                             columnNumber: 11
                         }, undefined)
                     ]
